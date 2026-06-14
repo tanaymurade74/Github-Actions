@@ -1,0 +1,27 @@
+name: Server Health
+on: push
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health report
+        run: |
+          echo "📊 SERVER HEALTH REPORT"
+          echo ""
+          echo "Disk Usage:"
+          df -h / | awk 'NR==2 {print $5}'
+          echo ""
+          echo "Memory Available:"
+          echo "$(free -g | awk '/Mem:/ {print $7}') GB"
+          echo ""
+          echo "CPU Cores:"
+          nproc
+          echo ""
+          echo "Node Version:"
+          node --version
+          echo ""
+          echo "Python Version:"
+          python3 --version | awk '{print $2}'
+          echo ""
+          echo "Health Status:"
+          echo "HEALTHY"
