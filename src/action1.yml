@@ -1,0 +1,14 @@
+name: greeting
+on: push
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print greeting
+              run: |
+                echo "Hello ${{ github.actor }}"
+                echo "You ${{ github.event_name }}ed to ${{ github.ref_name }}"
+                echo "from repository ${{ github.event.repository.name }}"
+                echo "at $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M') IST"
+
+        
