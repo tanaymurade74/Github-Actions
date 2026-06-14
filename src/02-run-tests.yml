@@ -1,0 +1,12 @@
+name: Calculator Tests
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: node src/calculator.test.js
