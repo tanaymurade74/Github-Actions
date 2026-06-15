@@ -1,0 +1,12 @@
+name: Handle Issues
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  log-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output issue details
+        env:
+          EVENT_JSON: ${{ toJSON(github.event) }}
+        run: echo "$EVENT_JSON"
